@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"></script>
+
+<head> 
+    <title>DataTable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Inventario</h1>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Calidad</th>
+            <th>Total</th>
+            <th>N° cajas</th>
+            <th>Creado</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Calidad</th>
+            <th>Total</th>
+            <th>N° cajas</th>
+            <th>Creado</th>
+        </tr>
+        </tfoot>
+    </table>
+
+    <a href="/">Inicio</a>
+</body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            language: {
+                url: 'dataTables.spanish.lang'
+            },
+            ajax: {
+                url: 'http://localhost:3377/api',
+                dataSrc: ''
+            },
+            columns: [
+                { data: 'id' },
+                { data: 'name' },
+                { data: 'quality' },
+                { data: 'amount' },
+                { data: 'boxes' },
+                { data: 'created' }
+            ]
+        } );
+    });
+</script>

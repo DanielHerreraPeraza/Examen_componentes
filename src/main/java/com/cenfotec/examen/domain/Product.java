@@ -31,9 +31,6 @@ public class Product {
     @Column(name="created")
     private String created;
 
-    @Transient
-    private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-
     public Product() {
 
     }

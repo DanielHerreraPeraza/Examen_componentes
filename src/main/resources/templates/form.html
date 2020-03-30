@@ -8,7 +8,13 @@
 	<h1>Form</h1>
     <form action="#" th:action="@{/product}" th:object="${product}" method="post">
     	<p>Nombre: <input type="text" th:field="*{name}" /></p>
-        <p>Calidad: <input type="text" th:field="*{quality}" /></p>
+        <p>Calidad:
+            <select th:field="*{quality}" >
+                <option value="A">Máximo</option>
+                <option value="B">Intermedio</option>
+                <option value="C">Mínimo</option>
+            </select>
+        </p>
         <p>Cantidad: <input type="number" th:field="*{amount}" /></p>
         <p>Cajas: <input type="number" th:field="*{boxes}" /></p>
         <p>Fecha: <input type="datetime-local" th:field="*{created}" /></p>
