@@ -1,0 +1,15 @@
+DROP DATABASE IF EXISTS `examenComponentes`;
+CREATE DATABASE IF NOT EXISTS `examenComponentes` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `examenComponentes`;
+
+
+DROP TABLE IF EXISTS `tproduct`;
+CREATE TABLE IF NOT EXISTS `tproduct` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `quality` VARCHAR(1) NOT NULL,
+  `amount` INT(5) NOT NULL,
+  `boxes` INT(2) NOT NULL,
+  `created` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
