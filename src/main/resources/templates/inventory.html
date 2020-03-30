@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="Content-Type" content="text/html"></meta>
+<title>Inventario</title>
+</head>
+<body>
+	<div>
+		<h1>Inventario</h1>
+		<ul>
+			<div th:each="entry,status : ${product}">
+				<li>
+					<h4>
+						<span th:text="${entry.id}">Código</span>
+					</h4>
+					<p>
+						<small><i></i> <span
+							th:text="${entry.name}">Nombre</span> </small>
+					</p>
+					<p>
+						<span th:text="${entry.amount}">Cantidad</span>
+					</p>
+				</li>
+			</div>
+		</ul>
+
+		<a href="/">Inicio</a>
+	</div>
+</body>
+</html>
