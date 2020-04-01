@@ -12,12 +12,20 @@
 </head>
 <body>
 	<h1>Inventario</h1>
+    <p>Bodega:
+        <select id="slctWarehouse" >
+            <option th:each="option:${warehouses}" th:value="${option.id}" th:text="${option.id} + ':' + ${option.name}">
+            </option>
+        </select>
+    </p>
+
     <table id="example" class="display" style="width:100%">
         <thead>
         <tr>
             <th>Código</th>
             <th>Nombre</th>
             <th>Calidad</th>
+            <th>N° bodega</th>
             <th>Total</th>
             <th>N° cajas</th>
             <th>Creado</th>
@@ -28,6 +36,7 @@
             <th>Código</th>
             <th>Nombre</th>
             <th>Calidad</th>
+            <th>N° bodega</th>
             <th>Total</th>
             <th>N° cajas</th>
             <th>Creado</th>
@@ -41,22 +50,41 @@
 
 <script>
     $(document).ready(function() {
+        let warehouseId = $('#slctWarehouse option:selected').val();
+
         $('#example').DataTable( {
-            language: {
-                url: 'dataTables.spanish.lang'
-            },
             ajax: {
-                url: 'http://localhost:3377/api',
+                url: 'http://localhost:3377/prodByWarehouse' + '?id=' + warehouseId,
                 dataSrc: ''
             },
             columns: [
                 { data: 'id' },
                 { data: 'name' },
                 { data: 'quality' },
+                { data: 'warehouse' },
                 { data: 'amount' },
                 { data: 'boxes' },
                 { data: 'created' }
             ]
         } );
+
+        $(function () {
+            $('#slctWarehouse').on("change", function() {
+                //console.log($('#slctWarehouse option:selected').val());
+                let warehouseId = $('#slctWarehouse option:selected').val();
+
+                    let dataRes = $.ajax({
+                    dataType: "json",
+                    url: 'http://localhost:3377/prodByWarehouse' + '?id=' + warehouseId,
+                    datatype: 'json',
+                    data: 'data',
+                    success: function(data){
+                        //console.log(data);
+                        $('#example').DataTable().clear();
+                        $('#example').DataTable().rows.add(data).draw();
+                    }
+                });
+            });
+        });
     });
 </script>

@@ -1,6 +1,7 @@
 package com.cenfotec.examen.web;
 
 import com.cenfotec.examen.domain.Product;
+import com.cenfotec.examen.domain.Warehouse;
 import com.cenfotec.examen.service.ProductService;
 import com.cenfotec.examen.service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,27 +12,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class ProductController {
-
-    @Autowired
-    ProductService productService;
+public class WarehouseController {
 
     @Autowired
     WarehouseService warehouseService;
 
-    @GetMapping("/product")
-    public String product(Model model) {
-        model.addAttribute("product", new Product());
-
-        model.addAttribute("warehouses", warehouseService.getAllWarehouses());
-        return "form";
+    @GetMapping("/warehouse")
+    public String warehouse(Model model) {
+        model.addAttribute("warehouse", new Warehouse());
+        return "formWarehouse";
     }
 
-    @PostMapping("/product")
-    public String product(@ModelAttribute Product product, Model model) {
-        model.addAttribute("product", product);
-        productService.saveProduct(product);
-        return "result";
+    @PostMapping("/warehouse")
+    public String product(@ModelAttribute Warehouse warehouse, Model model) {
+        model.addAttribute("warehouse", warehouse);
+        warehouseService.saveWarehouse(warehouse);
+        return "index";
     }
 
 }

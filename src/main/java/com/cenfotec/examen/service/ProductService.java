@@ -8,5 +8,6 @@ public interface ProductService {
 
     void saveProduct(Product newProduct);
     List<Product> getAllProducts();
+    List<Product> findAllByWarehouse(Long warehouse);
     
 }

@@ -1,9 +1,6 @@
 package com.cenfotec.examen.domain;
 
 import javax.persistence.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Entity
 @Table(name="Tproduct")
@@ -22,8 +19,8 @@ public class Product {
     @Column(name="amount")
     private int amount;
 
-    //@Column(name="bodega")
-    //private String bodega;
+    @Column(name="warehouse")
+    private Long warehouse;
 
     @Column(name="boxes")
     private int boxes;
@@ -35,9 +32,10 @@ public class Product {
 
     }
 
-    public Product(String name, String quality, int amount, int boxes, String date) {
+    public Product(String name, String quality, Long warehouse, int amount, int boxes, String date) {
         this.name = name;
         this.quality = quality;
+        this.warehouse = warehouse;
         this.amount = amount;
         this.boxes = boxes;
         this.created = date;
@@ -67,6 +65,14 @@ public class Product {
         this.quality = quality;
     }
 
+    public Long getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Long warehouse) {
+        this.warehouse = warehouse;
+    }
+
     public int getAmount() {
         return amount;
     }
@@ -90,4 +96,5 @@ public class Product {
     public void setCreated(String created) {
         this.created = created;
     }
+
 }

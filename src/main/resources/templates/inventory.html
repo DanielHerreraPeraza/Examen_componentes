@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
 <head>
 <meta charset="utf-8"></meta>
 <meta http-equiv="Content-Type" content="text/html"></meta>
@@ -9,17 +11,34 @@
 	<div>
 		<h1>Inventario</h1>
 		<ul>
+			<p>Bodega:
+				<select id="slctWarehouse" >
+					<option th:each="option:${warehouses}" th:value="${option.id}" th:text="${option.id} + ':' + ${option.name}">
+					</option>
+				</select>
+			</p>
 			<div th:each="entry,status : ${product}">
 				<li>
 					<h4>
-						<span th:text="${entry.id}">Código</span>
+						<span th:text="${entry.name}">Nombre</span>
 					</h4>
 					<p>
-						<small><i></i> <span
-							th:text="${entry.name}">Nombre</span> </small>
+						<span th:text="'Código: ' + ${entry.name}">Código</span> </small>
 					</p>
 					<p>
-						<span th:text="${entry.amount}">Cantidad</span>
+						<span th:text="'Calidad: ' + ${entry.quality}">Calidad</span>
+					</p>
+					<p>
+						<span th:text="'N° bodega: ' + ${entry.warehouse}">Bodega</span>
+					</p>
+					<p>
+						<span th:text="'Cantidad: ' + ${entry.amount}">Cantidad</span>
+					</p>
+					<p>
+						<span th:text="'N° cajas: ' + ${entry.boxes}">Boxes</span>
+					</p>
+					<p>
+						<span th:text="'Creado: ' + ${entry.created}">Creado</span>
 					</p>
 				</li>
 			</div>
@@ -29,3 +48,13 @@
 	</div>
 </body>
 </html>
+
+<script type="text/javascript">
+	$(function () {
+		$('#slctWarehouse').on("change", function() {
+			console.log($('#slctWarehouse option:selected').val());
+			// your ajax call
+		});
+	});
+
+</script>

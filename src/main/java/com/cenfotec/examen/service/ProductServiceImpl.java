@@ -23,4 +23,9 @@ public class ProductServiceImpl implements ProductService {
         return productRepo.findAll();
     }
 
+    @Override
+    public List<Product> findAllByWarehouse(Long warehouse) {
+        return productRepo.findAllByWarehouse(warehouse);
+    }
+
 }
