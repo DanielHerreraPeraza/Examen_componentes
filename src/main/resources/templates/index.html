@@ -3,27 +3,31 @@
 <head>
 <meta charset="utf-8"></meta>
 <meta http-equiv="Content-Type" content="text/html"></meta>
+	<link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
 <title>Productos</title>
 </head>
 <body>
 	<div>
-		<h1>Página principal</h1>
-		<ul>
-			<li>
-				<a href="/product">Agregar productos</a>
+		<h2 class="text-center">Construcción y Diseño de Componentes</h2>
+		<h2 class="text-center">Examen II</h2>
+		<h3 class="text-center mb-4">Daniel José Herrera Peraza</h3>
+		<ul class="nav justify-content-center">
+			<li class="nav-item">
+				<a class="nav-link active" href="/product">Agregar productos</a>
 			</li>
-			<li>
-				<a href="/inventory">Inventario</a>
+			<li class="nav-item">
+				<a class="nav-link active" href="/inventory">Inventario</a>
 			</li>
-			<li>
-				<a href="/api">Api</a>
+			<li class="nav-item">
+				<a class="nav-link active" href="/api">Api</a>
 			</li>
-			<li>
-				<a href="/dataTable">DataTable</a>
+			<li class="nav-item">
+				<a class="nav-link active" href="/dataTable">DataTable</a>
 			</li>
-
-
 		</ul>
 	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
 </body>
 </html>

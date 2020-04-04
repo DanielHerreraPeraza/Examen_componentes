@@ -3,30 +3,56 @@
 <head> 
     <title>Registro de productos</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
 </head>
 <body>
-	<h1>Registro de productos</h1>
-    <form action="#" th:action="@{/product}" th:object="${product}" method="post">
-    	<p>Nombre: <input type="text" th:field="*{name}" /></p>
-        <p>Calidad:
-            <select th:field="*{quality}" >
+	<h1 class="text-center display-4">Registro de productos</h1>
+    <form class="mb-4 ml-5" action="#" th:action="@{/product}" th:object="${product}" method="post">
+        <div class="form-group w-25">
+            <label for="txtName">Nombre</label>
+            <input class="form-control" type="text" id="txtName" th:field="*{name}" required/>
+        </div>
+        <div class="form-group w-25">
+            <label for="txtQuality">Calidad</label>
+            <select class="form-control" id="txtQuality" th:field="*{quality}" required>
                 <option value="A">Máximo</option>
                 <option value="B">Intermedio</option>
                 <option value="C">Mínimo</option>
             </select>
-        </p>
-        <p>Bodega:
-            <select id="slctWarehouse" th:field="*{warehouse}" >
+        </div>
+        <div class="form-group w-25">
+            <label for="txtWarehouse">Bodega</label>
+            <select class="form-control" id="txtWarehouse" th:field="*{warehouse}" required>
                 <option th:each="option:${warehouses}" th:value="${option.id}" th:text="${option.id} + ':' + ${option.name}">
                 </option>
             </select>
-        </p>
-        <p>Cantidad: <input type="number" th:field="*{amount}" /></p>
-        <p>Cajas: <input type="number" th:field="*{boxes}" /></p>
-        <p>Fecha: <input type="datetime-local" th:field="*{created}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        </div>
+        <div class="form-group w-25">
+            <label for="txtAmount">Cantidad</label>
+            <input class="form-control" type="number" id="txtAmount" th:field="*{amount}" required/>
+        </div>
+        <div class="form-group w-25">
+            <label for="txtBoxes">Cajas</label>
+            <input class="form-control" type="number" id="txtBoxes" th:field="*{boxes}" required/>
+        </div>
+        <div class="form-group w-25">
+            <label for="txtCreate">Fecha</label>
+            <input class="form-control" type="datetime-local" id="txtCreate" th:field="*{created}" required/>
+        </div>
+        <button type="submit" value="Submit" class="btn btn-primary">Registrar</button>
+        <button type="reset" value="Reset" class="btn btn-secondary">Limpiar</button>
+        <!--<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>-->
     </form>
 
-    <a href="/">Inicio</a>
+    <button type="button" class="btn btn-outline-info ml-5">
+        <svg href="/" class="bi bi-house" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V7h1v6.5a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 012 13.5zm11-11V6l-2-2V2.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z" clip-rule="evenodd"/>
+            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 011.414 0l6.647 6.646a.5.5 0 01-.708.708L8 2.207 1.354 8.854a.5.5 0 11-.708-.708L7.293 1.5z" clip-rule="evenodd"/>
+        </svg>
+        <a href="/">Inicio</a>
+    </button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
 </body>
 </html>

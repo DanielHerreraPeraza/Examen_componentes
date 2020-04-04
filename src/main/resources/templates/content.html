@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="Content-Type" content="text/html"></meta>
+    <title>Inventario</title>
+<body>
+    <div class="mb-4" th:fragment="content1" th:each="entry,status : ${product}">
+        <h4>
+            <span th:text="${entry.name}">Nombre</span>
+        </h4>
+        <ul class="list-group list-group-horizontal">
+            <!--<li class="list-group-item" th:text="${entry.name}">Nombre</li>-->
+            <li class="list-group-item" th:text="'Código: ' + ${entry.name}">Código</li>
+            <li class="list-group-item" th:text="'Calidad: ' + ${entry.quality}">Calidad</li>
+            <li class="list-group-item" th:text="'N° bodega: ' + ${entry.warehouse}">Bodega</li>
+            <li class="list-group-item" th:text="'Cantidad: ' + ${entry.amount}">Cantidad</li>
+            <li class="list-group-item" th:text="'N° cajas: ' + ${entry.boxes}">Boxes</li>
+            <li class="list-group-item" th:text="'Creado: ' + ${entry.created}">Creado</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
